@@ -1,0 +1,25 @@
+apply plugin: 'java'
+apply plugin: 'maven-publish'
+
+version '0.1'
+
+repositories {
+	mavenLocal()
+	mavenCentral()
+}
+
+dependencies {
+    compile  'de.colenet:dockertest:0.1'
+	testCompile 'junit:junit:4.12','org.assertj:assertj-core:2.0.0', 'org.mockito:mockito-all:2.0.2-beta'
+}
+
+publishing {
+	publications {
+		maven(MavenPublication) {
+			groupId 'de.colenet'
+			artifactId 'dockerclient'
+
+			from components.java
+		}
+	}
+}
